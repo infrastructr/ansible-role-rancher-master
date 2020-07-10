@@ -1,14 +1,20 @@
 ---
 - include_tasks: container/create.yml
+  tags: [rancher, rancher_master]
 
 - include_tasks: admin_password/read.yml
+  tags: [rancher, rancher_master]
 
 - include_tasks: admin_password/update.yml
   when: change_admin_password
+  tags: [rancher, rancher_master]
 
 - import_tasks: api_token/read.yml
+  tags: [rancher, rancher_master]
 
 - import_tasks: api_token/create.yml
   when: create_api_token
+  tags: [rancher, rancher_master]
 
 - include_tasks: server_url/update.yml
+  tags: [rancher, rancher_master]

@@ -32,7 +32,7 @@
 
 - name: Store API token
   lineinfile:
-    path: "{{ rancher_master_generated_config }}"
+    path: "{{ rancher_master_generated_base_config }}"
     regexp: '^rancher_api_token:'
     line: "rancher_api_token: {{ rancher_api_token }}"
     create: yes

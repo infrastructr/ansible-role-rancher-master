@@ -12,4 +12,4 @@ rancher_master_retries: 10
 rancher_master_delay: 30
 
 rancher_master_container_name: rancher_master
-rancher_master_generated_config: "{{ inventory_dir }}/group_vars/{{ rancher_master_base_group }}/rancher_generated.yml"
+rancher_master_generated_base_config: "{{ inventory_dir }}/group_vars/{{ rancher_master_base_group }}/rancher_generated.yml"
