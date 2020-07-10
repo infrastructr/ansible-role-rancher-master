@@ -1,0 +1,39 @@
+---
+- name: Get response from login endpoint using non default password
+  uri:
+    url: '{{ rancher_master_url }}/v3-public/localProviders/local?action=login'
+    method: POST
+    body: {"username": "admin", "password": "{{ rancher_master_admin_password }}"}
+    status_code: 201
+    body_format: json
+    validate_certs: "{{ rancher_master_validate_certs }}"
+  register: login_result
+  until: login_result.status == 201
+  retries: "{{ rancher_master_retries }}"
+  delay: "{{ rancher_master_delay }}"
+
+- name: Create permanent API key
+  uri:
+    url: '{{ rancher_master_url }}/v3/token'
+    method: POST
+    body: {"current":false, "expired":false, "isDerived":false, "ttl":0, "type":"token", "description":"automation"}
+    status_code: 201
+    body_format: json
+    headers:
+      Authorization: "Bearer {{ login_result.json.token }}"
+    validate_certs: "{{ rancher_master_validate_certs }}"
+  register: api_key_result
+
+- name: Set API token
+  set_fact:
+    rancher_api_token: "{{ api_key_result.json.token }}"
+  delegate_to: localhost
+  run_once: yes
+
+- name: Store API token
+  lineinfile:
+    path: "{{ rancher_master_generated_config }}"
+    regexp: '^rancher_api_token:'
+    line: "rancher_api_token: {{ rancher_api_token }}"
+    create: yes
+  delegate_to: localhost

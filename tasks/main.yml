@@ -1,0 +1,14 @@
+---
+- include_tasks: container/create.yml
+
+- include_tasks: admin_password/read.yml
+
+- include_tasks: admin_password/update.yml
+  when: change_admin_password
+
+- import_tasks: api_token/read.yml
+
+- import_tasks: api_token/create.yml
+  when: create_api_token
+
+- include_tasks: server_url/update.yml

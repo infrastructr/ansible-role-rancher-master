@@ -1,0 +1,15 @@
+---
+rancher_master_group: paas_master
+rancher_master_base_group: paas
+rancher_master_version: v2.4.5
+rancher_master_host: "{{ hostvars[groups[rancher_master_group][0]]['ansible_host'] }}"
+rancher_master_url: "https://{{ rancher_master_host }}"
+rancher_master_admin_password_default: admin
+rancher_master_admin_password: secret
+rancher_master_validate_certs: no
+rancher_master_ssl: generated-selfsigned
+rancher_master_retries: 10
+rancher_master_delay: 30
+
+rancher_master_container_name: rancher_master
+rancher_master_generated_config: "{{ inventory_dir }}/group_vars/{{ rancher_master_base_group }}/rancher_generated.yml"

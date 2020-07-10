@@ -1,0 +1,11 @@
+---
+- name: Start Rancher
+  docker_container:
+    name: "{{ rancher_master_container_name }}"
+    image: "rancher/rancher:{{ rancher_master_version }}"
+    state: started
+    command: "{{ (rancher_master_ssl == 'generated-letsencrypt') | ternary('--acme-domain ' + rancher_master_host, omit) }}"
+    restart_policy: unless-stopped
+    ports:
+      - 443:443
+      - 80:80

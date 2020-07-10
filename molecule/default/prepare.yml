@@ -1,0 +1,18 @@
+---
+- name: Install required OS packages
+  hosts: all
+  tasks:
+    - name: Install setuptools
+      package:
+        name: python3-setuptools
+        state: present
+
+- name: Install dependencies
+  hosts: all
+  vars:
+    pip_package: python3-pip
+    pip_install_packages:
+      - name: docker
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker

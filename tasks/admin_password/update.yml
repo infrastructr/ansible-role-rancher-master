@@ -1,0 +1,10 @@
+---
+- name: Change default admin password
+  uri:
+    url: '{{ rancher_master_url }}/v3/users?action=changepassword'
+    method: POST
+    body: {"currentPassword":"{{ rancher_master_admin_password_default }}", "newPassword":"{{ rancher_master_admin_password }}"}
+    headers:
+      Authorization: "Bearer {{ login_result.json.token }}"
+    body_format: json
+    validate_certs: "{{ rancher_master_validate_certs }}"

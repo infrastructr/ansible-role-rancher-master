@@ -1,0 +1,4 @@
+---
+- name: Set flag generate API token
+  set_fact:
+    create_api_token: "{{ rancher_api_token is undefined }}"

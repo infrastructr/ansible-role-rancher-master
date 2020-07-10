@@ -1,0 +1,10 @@
+---
+- name: Set Rancher server url
+  uri:
+    url: '{{ rancher_master_url }}/v3/settings/server-url'
+    method: PUT
+    body: {"name":"server-url", "value":"{{ rancher_master_url }}"}
+    headers:
+      Authorization: "Bearer {{ rancher_api_token }}"
+    body_format: json
+    validate_certs: "{{ rancher_master_validate_certs }}"

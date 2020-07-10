@@ -1,0 +1,19 @@
+---
+- name: Try to login using default admin password
+  uri:
+    url: '{{ rancher_master_url }}/v3-public/localProviders/local?action=login'
+    method: POST
+    body: {"username":"admin", "password":"{{ rancher_master_admin_password_default }}"}
+    body_format: json
+    validate_certs: "{{ rancher_master_validate_certs }}"
+    status_code:
+      - 201
+      - 401
+  register: login_result
+  until: login_result.status in [201, 401]
+  retries: "{{ rancher_master_retries }}"
+  delay: "{{ rancher_master_delay }}"
+
+- name: Set flag change admin password
+  set_fact:
+    change_admin_password: "{{ login_result.status == 201 }}"

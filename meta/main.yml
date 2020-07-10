@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: infrastructr
+  role_name: rancher_master
+  description: An Ansible Role that manages setup and configuration of Rancher master.
+  company: Infrastructr
+  issue_tracker_url: https://github.com/infrastructr/ansible-role-rancher-master/issues
+  license: MIT
+  min_ansible_version: 2.7
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - Rancher
+dependencies: []
