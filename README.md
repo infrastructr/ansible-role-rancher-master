@@ -57,8 +57,7 @@ Rancher server SSL certificate mode. Defaults to the auto generated self signed 
 
 ## Dependencies
 
-- [geerlingguy.pip](https://galaxy.ansible.com/geerlingguy/pip)
-- [geerlingguy.docker](https://galaxy.ansible.com/geerlingguy/docker)
+None.
 
 ## Example Playbook
 
@@ -69,7 +68,7 @@ Rancher server SSL certificate mode. Defaults to the auto generated self signed 
           - name: docker    
       roles:
         - geerlingguy.pip
-        - geerlingguy.docker      
+        - geerlingguy.docker    
         - infrastructr.rancher_master
 
 ## Development
