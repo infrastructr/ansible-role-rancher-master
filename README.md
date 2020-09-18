@@ -40,12 +40,12 @@ Rancher admin password.
 Initial Rancher admin password that is subject to change.
 
     rancher_master_validate_certs: no
-
-Number of seconds as delay between retries for long-running operations.
+    
+Enable/disable SSL certificate validation when communicating with the Rancher API.
 
     rancher_master_ssl: generated-selfsigned
 
-Enable/disable SSL certificate validation when communicating with the Rancher API.
+Rancher server SSL certificate mode. Defaults to the auto generated self signed SSL certificate. Specify `generated-letsencrypt` to use Let's Encrypt SSL certificate generation.
 
     rancher_master_retries: 10
     
@@ -53,7 +53,12 @@ Number of retries for long-running operations.
 
     rancher_master_delay: 30
     
-Rancher server SSL certificate mode. Defaults to the auto generated self signed SSL certificate. Specify `generated-letsencrypt` to use Let's Encrypt SSL certificate generation.
+Number of seconds as delay between retries for long-running operations.
+
+    rancher_master_volume: paas_master_volume # or /opt/rancher
+    
+Rancher master volume is for persistent data and it could be either named volume or path on the host.
+
 
 ## Dependencies
 
