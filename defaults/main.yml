@@ -14,4 +14,4 @@ rancher_master_delay: 30
 rancher_master_container_name: rancher_master
 rancher_master_generated_base_config: "{{ inventory_dir }}/group_vars/{{ rancher_master_base_group }}/rancher_generated.yml"
 
-rancher_master_volume_name: paas_master_volume
+rancher_master_volume: paas_master_volume
