@@ -9,3 +9,4 @@
     ports:
       - 443:443
       - 80:80
+    volumes: "{{ rancher_master_volume_name }}:/var/lib/rancher"
