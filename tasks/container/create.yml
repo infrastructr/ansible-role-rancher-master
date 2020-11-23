@@ -4,6 +4,7 @@
     name: "{{ rancher_master_container_name }}"
     image: "rancher/rancher:{{ rancher_master_version }}"
     state: started
+    privileged: yes
     command: "{{ (rancher_master_ssl == 'generated-letsencrypt') | ternary('--acme-domain ' + rancher_master_host, omit) }}"
     restart_policy: unless-stopped
     ports:
