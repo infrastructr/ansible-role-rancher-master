@@ -1,0 +1,25 @@
+name: Build and Release Workflow
+on: push
+jobs:
+  test:
+    env:
+      - MOLECULE_PROJECT_DIR: "$GITHUB_WORKSPACE"
+      - MOLECULE_ROLE_NAME: "$(basename $GITHUB_WORKSPACE)"
+      - HCLOUD_TOKEN: "$HCLOUD_TOKEN"
+      - MOLECULE_TEST_SCOPE: "$GITHUB_JOB"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Fetch docker-compose file
+        run: wget https://raw.githubusercontent.com/infrastructr/docker-molecule/3.0.4-n2g-1.0.0/docker-compose.yml
+      - name: Build the stack
+        run: docker-compose up -d
+      - name: Execute the tests
+        run: docker-compose exec -e HCLOUD_TOKEN="$HCLOUD_TOKEN" -e MOLECULE_TEST_SCOPE="$MOLECULE_TEST_SCOPE" -e MOLECULE_PLATFORM="$MOLECULE_PLATFORM" molecule molecule test --all
+      - name: Stop docker-compose
+        run: docker-compose down
+      - name: Publish role
+          uses: robertdebock/galaxy-action@1.1.0
+          with:
+            galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
