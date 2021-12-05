@@ -3,10 +3,10 @@ on: push
 jobs:
   test:
     env:
-      - MOLECULE_PROJECT_DIR: "$GITHUB_WORKSPACE"
-      - MOLECULE_ROLE_NAME: "$(basename $GITHUB_WORKSPACE)"
-      - HCLOUD_TOKEN: "$HCLOUD_TOKEN"
-      - MOLECULE_TEST_SCOPE: "$GITHUB_JOB"
+      MOLECULE_PROJECT_DIR: "$GITHUB_WORKSPACE"
+      MOLECULE_ROLE_NAME: "$(basename $GITHUB_WORKSPACE)"
+      HCLOUD_TOKEN: "$HCLOUD_TOKEN"
+      MOLECULE_TEST_SCOPE: "$GITHUB_JOB"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
