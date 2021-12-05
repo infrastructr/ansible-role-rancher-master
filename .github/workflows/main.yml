@@ -6,6 +6,7 @@ jobs:
       MOLECULE_PROJECT_DIR: ${{ github.workspace }}
       MOLECULE_ROLE_NAME: ${{ github.event.repository.name }}
       MOLECULE_TEST_SCOPE: ${{ github.job.id }}
+      HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
