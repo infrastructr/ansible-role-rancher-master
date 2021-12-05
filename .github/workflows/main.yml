@@ -3,10 +3,9 @@ on: push
 jobs:
   test:
     env:
-      MOLECULE_PROJECT_DIR: ${{ env.GITHUB_WORKSPACE }}
+      MOLECULE_PROJECT_DIR: ${{ github.workspace }}
       MOLECULE_ROLE_NAME: ${{ github.event.repository.name }}
-      HCLOUD_TOKEN: ${{ env.HCLOUD_TOKEN }}
-      MOLECULE_TEST_SCOPE: ${{ env.GITHUB_JOB }}
+      MOLECULE_TEST_SCOPE: ${{ github.job.id }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
