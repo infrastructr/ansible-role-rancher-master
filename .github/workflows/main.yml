@@ -3,6 +3,7 @@ on: push
 jobs:
   test:
     env:
+      COMPOSE_INTERACTIVE_NO_CLI: 1
       MOLECULE_PROJECT_DIR: ${{ github.workspace }}
       MOLECULE_ROLE_NAME: ${{ github.event.repository.name }}
       MOLECULE_TEST_SCOPE: ${{ github.job.id }}
