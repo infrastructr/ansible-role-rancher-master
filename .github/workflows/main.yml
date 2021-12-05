@@ -20,6 +20,6 @@ jobs:
       - name: Stop docker-compose
         run: docker-compose down
       - name: Publish role
-          uses: robertdebock/galaxy-action@1.1.0
-          with:
-            galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
+        uses: robertdebock/galaxy-action@1.1.0
+        with:
+          galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
