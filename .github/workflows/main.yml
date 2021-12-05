@@ -3,7 +3,6 @@ on: push
 jobs:
   test:
     env:
-      COMPOSE_INTERACTIVE_NO_CLI: 1
       MOLECULE_PROJECT_DIR: ${{ github.workspace }}
       MOLECULE_ROLE_NAME: ${{ github.event.repository.name }}
       MOLECULE_TEST_SCOPE: ${{ github.job.id }}
@@ -16,7 +15,7 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Execute the tests
-        run: docker-compose exec -e HCLOUD_TOKEN="$HCLOUD_TOKEN" -e MOLECULE_TEST_SCOPE="$MOLECULE_TEST_SCOPE" -e MOLECULE_PLATFORM="$MOLECULE_PLATFORM" molecule molecule test --all
+        run: docker-compose exec -T -e HCLOUD_TOKEN="$HCLOUD_TOKEN" -e MOLECULE_TEST_SCOPE="$MOLECULE_TEST_SCOPE" -e MOLECULE_PLATFORM="$MOLECULE_PLATFORM" molecule molecule test --all
       - name: Stop docker-compose
         run: docker-compose down
       - name: Publish role
