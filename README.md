@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/infrastructr/ansible-role-rancher-master.svg?branch=master)](https://travis-ci.org/infrastructr/ansible-role-rancher-master)
+![example workflow](https://github.com/infrastructr/ansible-role-rancher-master/actions/workflows/main.yml/badge.svg)
 [![Ansible Galaxy](https://img.shields.io/badge/role-infrastructr.rancher_master-blue.svg)](https://galaxy.ansible.com/infrastructr/rancher_master/)
 [![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/infrastructr/ansible-role-rancher-master)](https://galaxy.ansible.com/infrastructr/rancher_master)
 [![Ansible Galaxy Downloads](https://img.shields.io/ansible/role/d/49670.svg?color=blue)](https://galaxy.ansible.com/infrastructr/rancher_master/)
