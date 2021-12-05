@@ -1,5 +1,8 @@
 name: Build and Release Workflow
-on: push
+on:
+  push:
+    tags:
+      - '*'
 jobs:
   test:
     env:
